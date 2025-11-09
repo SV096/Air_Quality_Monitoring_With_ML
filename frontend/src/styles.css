@@ -1,0 +1,214 @@
+/* Import Inter font early */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand tokens */
+:root {
+  --brand-50: #eef2ff;
+  --brand-100: #dbeafe;
+  --brand-300: #60a5fa;
+  --brand-400: #3b82f6;
+  --brand-500: #2563eb;
+  --brand-600: #1d4ed8;
+  --good: #16a34a;
+  --moderate: #facc15;
+  --unhealthy: #f97316;
+  --v-unhealthy: #ef4444;
+  --hazard: #8b5cf6;
+}
+
+/* Global */
+html,
+body,
+#root {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #0f172a;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+.dark body {
+  background: linear-gradient(180deg, #071427 0%, #041024 100%);
+  color: #e6eef8;
+}
+
+/* Card */
+.card {
+  @apply rounded-2xl shadow-sm p-6 bg-white dark:bg-slate-800 transition-all duration-300 border border-slate-200 dark:border-slate-700;
+}
+
+/* Brand button */
+.brand-btn {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold text-white shadow-sm transition-all;
+  background-image: linear-gradient(90deg, var(--brand-400), var(--brand-500));
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.brand-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Badge */
+.badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+/* Helpers */
+input,
+select,
+textarea,
+button {
+  @apply transition-all duration-200;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply outline-none ring-2 ring-brand-300 ring-opacity-50;
+}
+
+/* Leaflet fix */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+/* AQI badge colors */
+.bg-good {
+  background: var(--good);
+  color: white;
+}
+.bg-moderate {
+  background: var(--moderate);
+  color: black;
+}
+.bg-unhealthy {
+  background: var(--unhealthy);
+  color: white;
+}
+.bg-v-unhealthy {
+  background: var(--v-unhealthy);
+  color: white;
+}
+.bg-hazard {
+  background: var(--hazard);
+  color: white;
+}
+
+/* Dark mode AQI colors */
+.dark .bg-good {
+  background: var(--good);
+  color: white;
+}
+.dark .bg-moderate {
+  background: var(--moderate);
+  color: black;
+}
+.dark .bg-unhealthy {
+  background: var(--unhealthy);
+  color: white;
+}
+.dark .bg-v-unhealthy {
+  background: var(--v-unhealthy);
+  color: white;
+}
+.dark .bg-hazard {
+  background: var(--hazard);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-500;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+}
+
+/* Focus visible for accessibility */
+.focus-visible {
+  @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+}
+
+/* Chart.js dark mode fix */
+.dark .chart-container {
+  color: #e2e8f0;
+}
